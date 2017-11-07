@@ -12,5 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
+
+Route::get('/users', function () {
+    $Users = DB::table('users')->latest()->get();
+    $Users = App\User::All();
+});
+
+Route::get('/users/{user}', function () {
+    return view('users/user');
+});
+
+Route::get('/compliments/received', function () {
+    return view('compliments/received');
+
+  });
+
+  Route::get('/compliments/given', function () {
+      return view('compliments/sent');
+    });
